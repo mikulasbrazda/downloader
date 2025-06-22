@@ -1,18 +1,17 @@
 #include <iostream>
 #include <string>
-#include <thread>
-#include <filesystem>
+
 
 const auto CURL_COMMAND = "curl";
 const std::string OUTPUT_DIR = "./downloads/";
-
+const auto THREAD_COUNT = 3;
 /*
  * Downloads a file from the given URL and saves it to the specified output file.
  * Prints status messages to the console.
- * @param url The URL to download.
- * @param outputFile The name of the file to save the downloaded content.
+ * @param threadId The identifier for the thread performing the download. This is used for 
+ * suffixing the output file name. So multiple threads can download files with same names concurrently.
  */
-void downloadFile(const std::string& url, const std::string& outputFile);
+void downloadFile(const std::string threadId);
 
 /*
  * Extracts the output file name from a URL by taking the substring after the last '/'.
